@@ -1,6 +1,6 @@
 ## preprocessing data
 
-*fastp on everything
+* fastp on everything
 
 ```
 #!/bin/bash
