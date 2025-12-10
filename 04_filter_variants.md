@@ -51,7 +51,7 @@ bgzip novel_lineage_qual20_SNPs.recode.vcf; bcftools index novel_lineage_qual20_
 bcftools isec -p 2pop main_lineage_qual20_SNPs.recode.vcf.gz novel_lineage_qual20_SNPs.recode.vcf.gz
 cd 2pop/
 bcftools merge 0002.vcf 0003.vcf > merged.vcf.gz
-bcftools view 2pop/merged.vcf.gz > 2pops_SNPS_shared.vcf
+bcftools view merged.vcf.gz > 2pops_SNPS_shared.vcf
 ```
 
 
