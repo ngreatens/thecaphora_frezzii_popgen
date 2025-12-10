@@ -20,4 +20,3 @@ freebayes-parallel \
         --fasta-reference ${ref} \
         --bam-list $bamlist > $out
 ```
- 
