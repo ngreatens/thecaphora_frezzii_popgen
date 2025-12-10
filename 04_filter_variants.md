@@ -37,12 +37,25 @@ vcftools --vcf novel_lineage_qual20.vcf --maf .05 --recode --recode-INFO-all --o
 vcftools --vcf novel_lineage_qual20.recode.vcf --recode --recode-INFO-all  --out novel_lineage_qual20_SNPs  --remove-indels
 ```
 
-* intersect to find SNPS shared between populations
+* intersect to find number of SNPS shared between populations. approx 8500
 
 ```
-bedtools intersect -a main_lineage_qual20_SNPs.recode.vcf -b novel_lineage_qual20_SNPs.recode.vcf > 2pops_shared_SNPS.vcf
+bedtools intersect -a main_lineage_qual20_SNPs.recode.vcf -b novel_lineage_qual20_SNPs.recode.vcf | wc -l 
 
 ```
+
+* isec and merge to get merged dataset of SNPS.
+```
+bgzip main_lineage_qual20_SNPs.recode.vcf; bcftools index main_lineage_qual20_SNPs.recode.vcf.gz
+bgzip novel_lineage_qual20_SNPs.recode.vcf; bcftools index novel_lineage_qual20_SNPs.recode.vcf.gz
+bcftools isec -p 2pop main_lineage_qual20_SNPs.recode.vcf.gz novel_lineage_qual20_SNPs.recode.vcf.gz
+cd 2pop/
+bcftools merge 0002.vcf 0003.vcf > merged.vcf.gz
+bcftools view 2pop/merged.vcf.gz > 2pops_SNPS_shared.vcf
+```
+
+
+
 
 ## SNPS per sample
 
