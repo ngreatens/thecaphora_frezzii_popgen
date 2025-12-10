@@ -1,6 +1,7 @@
 # map all reads
 
 * using duplicate marked and read group added bam files, use freebayes to call variants in parallel
+* samples with < 10x coverage and haploid isolates (note "IPAVE 0401" accidentally retained, erroneously called Nelio in first round). Later filtered out.
 
 ```
 #!/bin/bash
@@ -19,3 +20,4 @@ freebayes-parallel \
         --fasta-reference ${ref} \
         --bam-list $bamlist > $out
 ```
+ 
