@@ -1,5 +1,5 @@
 # filter variants by pop and quality
-
+```
 #!/bin/bash
 
 vcf=$1
