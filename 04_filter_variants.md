@@ -27,7 +27,7 @@ vcftools \
         --minDP 5 \
         --maf .05 \
         --recode
-
+```
 
 ## SNPS per sample
 
