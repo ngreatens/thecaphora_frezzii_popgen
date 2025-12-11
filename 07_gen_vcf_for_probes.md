@@ -1,3 +1,5 @@
+
+* in "/90daydata/fdwsru_fungal/Nick/peanut_smut_popgen/07_gen_vcf_for_probes/redo"
 ```
 # using filtered dataset "SNPs_maf05_filtered.vcf"
 
