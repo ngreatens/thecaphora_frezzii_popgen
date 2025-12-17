@@ -123,9 +123,27 @@ Plink2 format and get PCA
 ```
 cd remove2
 plink2 --vcf ${VCF%.*}__all_but_two.vcf --make-pgen --out sorted_pgen --sort-vars --rename-chrs rename.txt  --chr-set 27
-plink2 -pfile sorted_pgen --pca
+
+# use SNPS in linkage disequilibrium 
+plink2 -pfile sorted_pgen --pca --indep-pairwise 400 10 .2 --set-all-var-ids @:#
 ```
 
+Plot in R
+
+```{r}
+# PCA
+
+DIR <- "/90daydata/fdwsru_fungal/Nick/peanut_smut_popgen/08_popgen/PCA"
+setwd(DIR) 
+pca <- read.table("plink2.eigenvec", header=FALSE)
+
+plot(pca$V2, pca$V3, xlab="PC1 (72.5 %)", ylab="PC2 (.96 %)")
+png(filename = "PCA_all_samples.png", width = 300, height = 300, units = "px")
+plot(pca$V2, pca$V3, xlab="PC1 (72.5 %)", ylab="PC2 (.96 %)")
+dev.off()
+```
+
+![PCA all samples](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/PCA_all_samples.png)
 
 
 ```
