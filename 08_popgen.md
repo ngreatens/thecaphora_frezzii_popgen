@@ -41,7 +41,9 @@ cut -f1 ${GENOME}.fai | sort -V | head -27 > tmp
 cut -f2 -d '_' tmp > tmp2
 paste tmp tmp2 > rename.txt
 rm tmp tmp2
+```
 
+format in plink and get bed for admixture
 ```
 plink2 --vcf ${VCF%.*}_chroms.vcf --make-pgen --out sorted_pgen --sort-vars --rename-chrs rename.txt  --chr-set 27
 plink2 --pfile sorted_pgen --make-bed --out sorted_pgen
