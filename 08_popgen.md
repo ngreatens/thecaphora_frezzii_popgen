@@ -128,6 +128,12 @@ plink2 --vcf ${VCF%.*}__all_but_two.vcf --make-pgen --out sorted_pgen --sort-var
 plink2 -pfile sorted_pgen --pca --indep-pairwise 400 10 .2 --set-all-var-ids @:#
 ```
 
+
+```
+plink2 --vcf out.recode.vcf --make-pgen --out sorted_pgen_fileset --sort-vars --rename-chrs rename.txt  --chr-set 38 --set-missing-var-ids @:# --mind .5 --geno 0.1 --vcf-half-call missing
+plink2 -pfile sorted_pgen_fileset --pca
+```
+
 Plot in R
 
 ```{r}
@@ -145,11 +151,7 @@ dev.off()
 
 ![PCA all samples](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/PCA_all_samples.png)
 
-
-```
-plink2 --vcf out.recode.vcf --make-pgen --out sorted_pgen_fileset --sort-vars --rename-chrs rename.txt  --chr-set 38 --set-missing-var-ids @:# --mind .5 --geno 0.1 --vcf-half-call missing
-plink2 -pfile sorted_pgen_fileset --pca
-```
+Populations show clear differentiation. Outlier in pop2, 29_2, likely due to erroneous calls as it has low coverage (13.2 x)
 
 
 
