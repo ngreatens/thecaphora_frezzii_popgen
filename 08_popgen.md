@@ -83,7 +83,7 @@ dev.off()
 ```
 * with all samples, the graph looks noisy, with some odd patterns, while still showing decay, consistent with recombination. Noise is likely due to population structure.
 
-![linkage drag plot for all samples](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_all_samples.png)
+![linkage drag plot for all samples](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_all_samples(2).png)
 
 ### subset populations and reassess linkage drag
 
