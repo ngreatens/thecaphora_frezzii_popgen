@@ -63,6 +63,8 @@ plink2 \
 
 Now in R, graph linkage disequlibrium from output "plink2.vcor" file
 
+![LD in Lineage 1](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_lineage1.png)
+![LD in Lineage 2](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_lineage2.png)
 
 ``` {r}
 DIR <- "/90daydata/fdwsru_fungal/Nick/peanut_smut_popgen/08_popgen/LD"
@@ -77,7 +79,10 @@ library(plyr)
 df2 <- ddply(df, .(bin), summarise,
       meanr2 = mean(V7))
 
+#get plot
+png(filename = "LD_all_samples.png", width = 800, height = 600, units = "px")
 plot(df2$bin*BINSIZE/1000, df2$meanr2, xlab="Physical distance (kp)", ylab="R2", main="LD decay rate")
+dev.off()
 ```
 * with all samples, the graph looks noisy, with some odd patterns, while still showing decay, consistent with recombination. Noise is likely due to population structure.
 
@@ -85,7 +90,18 @@ plot(df2$bin*BINSIZE/1000, df2$meanr2, xlab="Physical distance (kp)", ylab="R2",
 
 ### subset populations and reassess linkage drag
 
+* using population structure data, subset samples based on clear patterns. Also remove 'Nelio', a haploid included mistakenly and misnamed in first round and one odd sample, apparently contamination based on dome kmer inclusion of both all three alleles of the MAT genes
 
+```
+mkdir lineage1 lineage2
+
+# subset vcf based on inclusion of samples, and filter out sites without an alternate allele (it's in the other pop)
+
+bcftools view ${VCF%.*}_chroms.vcf -S ^novel_genotypes_plus.txt | vcffilter -f "AC > 0" > lineage1/${VCF%.*}_chroms_lineage1.vcf
+bcftools view ${VCF%.*}_chroms.vcf -S novel_genotypes.txt | vcffilter -f "AC > 0" > lineage2/${VCF%.*}_chroms_lineage2.vcf
+```
+
+And rerun plink and R script as above for each lineage
 
 
 
