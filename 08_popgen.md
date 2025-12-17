@@ -63,9 +63,6 @@ plink2 \
 
 Now in R, graph linkage disequlibrium from output "plink2.vcor" file
 
-![LD in Lineage 1](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_lineage1.png)
-![LD in Lineage 2](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_lineage2.png)
-
 ``` {r}
 DIR <- "/90daydata/fdwsru_fungal/Nick/peanut_smut_popgen/08_popgen/LD"
 setwd(DIR)
@@ -103,6 +100,11 @@ bcftools view ${VCF%.*}_chroms.vcf -S novel_genotypes.txt | vcffilter -f "AC > 0
 
 And rerun plink and R script as above for each lineage
 
+![LD in Lineage 1](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_lineage1.png)
+![LD in Lineage 2](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_lineage2.png)
+
+
+Now low linkage disequilibrium with low and rapidly decreasing R2 values is readily apparent in lineage 1. In lineage 2 (5 samples), a low number of samples, shared ancestry, possibly recent founder effects, etc. affect the plot more significantly, but low and generally diminishing R2 values with distance similarly suggest recombination.
 
 
 
