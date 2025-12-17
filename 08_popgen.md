@@ -81,6 +81,8 @@ plot(df2$bin*BINSIZE/1000, df2$meanr2, xlab="Physical distance (kp)", ylab="R2",
 ```
 * with all samples, the graph looks noisy, with some odd patterns, while still showing decay, consistent with recombination. Noise is likely due to population structure.
 
+![linkage drag plot for all samples](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/LD_all_samples.png)
+
 ### subset populations and reassess linkage drag
 
 
