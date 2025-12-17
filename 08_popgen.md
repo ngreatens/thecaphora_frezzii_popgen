@@ -52,35 +52,81 @@ plink2 --pfile sorted_pgen --make-bed --out sorted_pgen
 *get estimates of structure from admixture
 
 ```
-for i in {2..6}; do admixture --cv sorted_pgen.bed ${i} > log${i}.out; done
+for i in {2..9}; do admixture --cv sorted_pgen.bed ${i} > log${i}.out; done
 awk '/CV/ {print $3,$4}' *out | cut -c 4,7-20
 ```
 
 returns:
+```
+2 0.16583
+3 0.16830
+4 0.17148
+5 0.16974
+6 0.17359
+7 0.18958
+8 0.28524
+9 0.36111
+```
 
 2 seems right, as it is consistent with phylogeny. One outlier possibly due to contamination based on odd result from mat gene screening suggesting likley contamination.
 
+
+### look at structure in sublineages
 Subset two pops.
 
 ```
 mkdir lineage1 lineage2
 
 # subset vcf based on inclusion of samples, and filter out sites without an alternate allele (it's in the other pop)
-_
+
 bcftools view ${VCF%.*}_chroms.vcf -S ^novel_genotypes_plus.txt | vcffilter -f "AC > 0" > lineage1/${VCF%.*}_chroms_lineage1.vcf
 bcftools view ${VCF%.*}_chroms.vcf -S novel_genotypes.txt | vcffilter -f "AC > 0" > lineage2/${VCF%.*}_chroms_lineage2.vcf
 ```
+Repeat admixture analysis
 
+otuput:
+```
+## lineage 1
 
+2 0.29726
+3 0.31013
+4 0.30581
+5 0.33971
+6 0.36969
+7 0.38309
+8 0.44530
+9 0.46099
 
+## lineage 2 (5 samples)
 
+2 0.82417
+3 0.85760
+4 0.27204
+5 0.00663
+6 0.06481
+7 0.06551
+8 0.04461
+9 0.03643
 
+```
 
-#plot output in R
-
-
+Stick with k=2. Relatively high CV values when lineage 1 is subset, and the relatively low number of SNPs in the lineage and fairly uniform tree lend credence to this structure
 
 # pca 
+
+remove the two samples that may confound analysis, due to ploidy and likley contamination: Nelio_markdup.bam 135909_markdup.bam
+```
+mkdir remove2
+bcftools view ${VCF%.*}_chroms.vcf -S ^remove2.txt | vcffilter -f "AC > 0" > remove2/${VCF%.*}__all_but_two.vcf
+```
+Plink2 format and get PCA
+```
+cd remove2
+plink2 --vcf ${VCF%.*}__all_but_two.vcf --make-pgen --out sorted_pgen --sort-vars --rename-chrs rename.txt  --chr-set 27
+plink2 -pfile sorted_pgen --pca
+```
+
+
 
 ```
 plink2 --vcf out.recode.vcf --make-pgen --out sorted_pgen_fileset --sort-vars --rename-chrs rename.txt  --chr-set 38 --set-missing-var-ids @:# --mind .5 --geno 0.1 --vcf-half-call missing
