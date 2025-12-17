@@ -65,7 +65,8 @@ Now in R, graph linkage disequlibrium from output "plink2.vcor" file
 
 
 ``` {r}
-setwd('/90daydata/fdwsru_fungal/Nick/clr/33_snpeff/original_genome/vcf_dom_lineage_snps_indels/plink/subset')
+DIR <- "/90daydata/fdwsru_fungal/Nick/peanut_smut_popgen/08_popgen/LD"
+setwd(DIR)
 
 df <- read.table('plink2.vcor', header = FALSE)
 BINSIZE=100
@@ -78,6 +79,10 @@ df2 <- ddply(df, .(bin), summarise,
 
 plot(df2$bin*BINSIZE/1000, df2$meanr2, xlab="Physical distance (kp)", ylab="R2", main="LD decay rate")
 ```
+* with all samples, the graph looks noisy, with some odd patterns, while still showing decay, consistent with recombination. Noise is likely due to population structure.
+
+### subset populations and reassess linkage drag
+
 
 
 
