@@ -14,13 +14,11 @@ plink2 --pfile sorted_pgen --make-bed --out for_gemma
 ```
 
 
-# change sixth column of .fam file to be all '1' to indicate a phenotype is available for the samples
-
+Change sixth column of .fam file to be all '1' to indicate a phenotype is available for the samples
+```
 awk '{print $1, $2, $3, $4, $5, 1}' for_gemma.fam > tmp; mv tmp for_gemma.fam
-
-# make phenotype file.
-
-# use data from spreadsheet in file phenotypes.txt
+```
+Make phenotype file with data from spreadsheet in file phenotypes.txt
 
 ```
 cut -f2 for_gemma.fam | sed 's/_markdup.bam//g' > samples
