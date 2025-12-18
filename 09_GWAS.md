@@ -58,8 +58,6 @@ dev.off()
 
 Ideally, a hit is above P ≤ 5 x 10⁻⁸, so there are no solid hits here. Some small towers on scaffolds 5 and 24, with the best hit on 16. All are in non-coding regions, possibly hitting on regulatory elements, etc. 
 
-
-Downstream of the SNP is a gene rich region, while upstream is mostly TEs
 * The hit on 2 is in a CACTA TIR in a gene rich region. No obvious candidates
 
 * The his on 5 is  in a gene rich space, but at first glance, but nothing stands out at a first glance.
