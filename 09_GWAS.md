@@ -2,7 +2,7 @@
 
 
 
-# gemma
+## Gemma
 
 subset vcf to exclude samples without phenotyping data (occurrence on susceptible peanut).
 * exclude comet and poale
@@ -30,17 +30,15 @@ Get matrix to account for population structure
 gemma -bfile for_gemma -gk 1 -o tmp
 ```
 
-# Run gemma with phenotypes 
+Run gemma with phenotypes 
 ```
 gemma -bfile for_gemma -p phenotypes_for_gemma.txt -lm 4 -o infection -r2 1 -hwe 0 -maf 0.05 -k output/tmp.cXX.txt
 ```
 
 Now in R, plot output as Manhattan plot
 
-
+## Mahattan plot
 ```{r}
-
-# Mahattan plot
 
 DIR <- "/90daydata/fdwsru_fungal/Nick/peanut_smut_popgen/08_popgen/GWAS_resistance/output"
 setwd(DIR) 
