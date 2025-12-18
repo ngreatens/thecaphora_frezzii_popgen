@@ -55,3 +55,24 @@ dev.off()
 ```
 
 ![Manhattan plot for all samples](https://github.com/ngreatens/thecaphora_frezzii_popgen/blob/main/Manhattan%20plot.png)
+
+Ideally, a hit is above P ≤ 5 x 10⁻⁸, so there are no solid hits here. Some small towers on scaffolds 5 and 24, with the best hit on 16. All are in non-coding regions, possibly hitting on regulatory elements, etc. 
+
+
+Downstream of the SNP is a gene rich region, while upstream is mostly TEs
+* The hit on 2 is in a CACTA TIR in a gene rich region. No obvious candidates
+
+* The his on 5 is  in a gene rich space, but at first glance, but nothing stands out at a first glance.
+
+* Hit on 10 in a gene poor region full of TEs, but 100kb upstream of a couple of predicted effectors
+
+* Hi on 12 is in a repeat rich, gene poor region near the end of a chromosome. Nearby genes are mostly annotated within repeats, possibly erroneous annotation
+
+* The hit on 16 is about 2 kb upstream of ACQY0O_003241 (ENOG503Q535), a "GTPase-activator protein for Rho-like GTPases" per EGGNOG, likley regulating GYP8 downstream. This gene has been demonstrated to be necessary for pathogenicity in other systems(https://www.sciencedirect.com/science/article/pii/S2095311923000758). Downstream of the SNP is a gene rich region, while upstream is mostly TEs
+
+* The hit on 24 is in a repeat rich, gene sparse region that is possibly not well assembled 
+
+
+
+
+
