@@ -1,4 +1,4 @@
-#!/bin/bash
+
 
 * index genome tfrez.scaffolds.fa
 
